@@ -32,6 +32,7 @@ jQuery(function() { // Wait for jQuery
 
     if (duckOutput !== false)
     {
+      duckOutput = duckOutput.replace(/\n$/,"") 
       $(".arduino").val(duckOutput);
       if (isFileSaverSupported)
         enableDl(500); // Enable download button
@@ -79,8 +80,8 @@ jQuery(function() { // Wait for jQuery
     var sketchName = $("#dl-filename").val();
     var zipHandler = new JSZip();
 
-    // Add the payload as .ino
-    zipHandler.file(sketchName + "/" + sketchName + ".ino", $(".arduino").val());
+    // Add the payload as .txt
+    zipHandler.file(sketchName + "/" + sketchName + ".txt", $(".arduino").val());
     // Add readme
     zipHandler.file("readme", $.ajax({
       url: 'readme.default',
