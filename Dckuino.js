@@ -127,6 +127,9 @@ class Dckuinojs {
     var wordArray;
     var wordOne;
 
+    // Replace "<" with "&lt;" to prevent triggering the file upload bug
+    toParse = toParse.replace(/</g, '&lt;');
+
     // Trim whitespaces
     toParse = toParse.replace(/^ +| +$/gm, '');
 
