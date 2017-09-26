@@ -6,7 +6,7 @@ The version in this repository has been modified by Corey Harding to convert Duc
   
 Simply copy/paste or write your Ducky Script into the text area on the left, click Compile, and then copy/paste or download the output from the text area on the right to be used with ESPloit.  
 
-A live version is available at: https://exploitagency.github.io/Duckuino/  
+A live version is available at: https://exploitagency.github.io/Duckuino/index.html  
   
 # Original Authors  
   - [Plazmaz](https://github.com/Plazmaz)  
