@@ -52,7 +52,9 @@ var comboMap = { // Key that can only be used in combos
   ALT:'130',
   SHIFT:'129',
   CTRL:'128',
-  CONTROL:'128'
+  CONTROL:'128',
+  'CTRL-ALT':'128+130',
+  'CTRL-SHIFT':'128+129'
 };
 
 var keyMap = { // Normal keys
