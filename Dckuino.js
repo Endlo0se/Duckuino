@@ -162,6 +162,9 @@ class Dckuinojs {
       // Set to unknown command by default
       commandKnown = false;
 
+      // Resets noNewline to false
+      noNewline = false;
+
       // Cut every line in words & store the first word in a var
       wordArray = lineArray[i].split(' ');
       wordOne = wordArray[0];
@@ -200,6 +203,37 @@ class Dckuinojs {
             console.error('Error: at line: ' + (i + 1) + ', DELAY only accepts numbers');
             return;
           }
+          break;
+        case "PINBRUTE":
+          wordArray.shift();
+
+          if(wordArray[0] === undefined || wordArray[0] === '') {
+            console.error('Error: at line: ' + (i + 1) + ', PINBRUTE needs a number');
+            return;
+          }
+
+          if (! isNaN(wordArray[0]))
+          {
+            var pinbruteCurrentTry = 1;
+            var pinbruteMaxTry = wordArray[1];
+            var pinbruteCurrent = 0;
+            var pinbruteEnd = Array(parseInt(wordArray[0])+1).join("9");
+            while(pinbruteCurrent<=pinbruteEnd){
+              parsedOut += "PrintLine:"+Array(Math.max(String(wordArray[0]) - String(pinbruteCurrent).length + 1, 0)).join(0) + pinbruteCurrent+"\n";
+              if(pinbruteCurrentTry==pinbruteMaxTry&&pinbruteCurrent<pinbruteEnd){
+                parsedOut += "CustomDelay:"+wordArray[2]+"\n";
+                pinbruteCurrentTry=0;
+              }
+              pinbruteCurrentTry++;
+              pinbruteCurrent++;
+            }
+            commandKnown = true;
+            noNewline = true;
+          } else {
+            console.error('Error: at line: ' + (i + 1) + ', PINBRUTE only accepts numbers');
+            return;
+          }
+
           break;
         case "DEFAULTDELAY":
         case "DEFAULT_DELAY":
